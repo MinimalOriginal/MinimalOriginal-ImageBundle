@@ -1,4 +1,7 @@
 # Ivory CKEditor
+configs:
+    minimal_config:
+        extraPlugins: "mediasbrowser"
 toolbars:
     items:
         insert:     [ "Mediasbrowser" ]
