@@ -1,0 +1,14 @@
+#Gaufrette
+adapters:
+    adapter_aws_s3_images:
+        aws_s3:
+            service_id: 'minimal_image.aws_s3.client'
+            bucket_name:  "%amazon_s3_bucket_name%"
+            options:
+                directory: 'original'
+                create: true
+filesystems:
+    filesystem_aws_s3_images:
+        adapter: adapter_aws_s3_images
+        alias: gaufrette_s3_filesystem
+stream_wrapper: ~

@@ -1,0 +1,24 @@
+{
+    "name": "minimaloriginal/image-bundle",
+    "description" : "The image bundle for Minimal",
+    "type" : "symfony-bundle",
+    "keywords" : [
+        "image bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.5.9",
+        "symfony/symfony": "3.3.*",
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "liip/imagine-bundle": "^1.6",
+        "knplabs/knp-gaufrette-bundle": "^0.3.0",
+        "knplabs/gaufrette": "^0.2.1",
+        "aws/aws-sdk-php": "^3.19",
+        "minimaloriginal/core-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "MinimalOriginal\\ImageBundle\\": "src/" }
+    }
+}

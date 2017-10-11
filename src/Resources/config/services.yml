@@ -1,0 +1,23 @@
+services:
+  minimal_manager.module.image:
+      class: MinimalOriginal\ImageBundle\MinimalModule
+      arguments: ['@doctrine.orm.entity_manager']
+      calls:
+        - [setUploader, ["@minimal_image.uploader"]]
+      tags: [minimal_manager.module]
+
+
+  minimal_image.amazon.s3Credentials:
+      class: Aws\Credentials\Credentials
+      arguments: ["%amazon_aws_key%", "%amazon_aws_secret_key%"]
+
+  minimal_image.aws_s3.client:
+      class: Aws\S3\S3Client
+      arguments:
+          - version: "%amazon_s3_version%"
+            region: "%amazon_s3_region%"
+            credentials: "@minimal_image.amazon.s3Credentials"
+
+  minimal_image.uploader:
+      class: MinimalOriginal\ImageBundle\Service\Uploader
+      arguments: ['@gaufrette_s3_filesystem']

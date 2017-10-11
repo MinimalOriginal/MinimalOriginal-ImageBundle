@@ -1,0 +1,8 @@
+# Ivory CKEditor
+toolbars:
+    items:
+        insert:     [ "Mediasbrowser" ]
+plugins:
+    mediasbrowser:
+        path:     "/bundles/minimalimage/js/ckeditor/plugins/mediasbrowser/"
+        filename: "plugin.js"

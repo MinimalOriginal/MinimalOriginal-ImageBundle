@@ -1,0 +1,53 @@
+#Liip_Imagine
+loaders:
+    loader_aws_s3_images:
+        stream:
+            wrapper: gaufrette://filesystem_aws_s3_images/
+resolvers:
+   cache_resolver_aws_s3:
+      aws_s3:
+          bucket: %amazon_s3_bucket_name%
+          client_config:
+                credentials:
+                    key:    %amazon_aws_key%
+                    secret: %amazon_aws_secret_key%
+                region: %amazon_s3_region%
+                version: "%amazon_s3_version%"
+          get_options:
+              Scheme: 'https'
+          put_options:
+              CacheControl: 'max-age=86400'
+filter_sets:
+    small:
+        data_loader: loader_aws_s3_images
+        cache: cache_resolver_aws_s3
+        quality: 70
+        filters:
+            thumbnail: { size: [100, 58], mode: outbound }
+    medium:
+        data_loader: loader_aws_s3_images
+        cache: cache_resolver_aws_s3
+        quality: 70
+        filters:
+            thumbnail: { size: [250,141], mode: outbound }
+    large:
+        data_loader: loader_aws_s3_images
+        cache: cache_resolver_aws_s3
+        quality: 70
+        filters:
+            thumbnail: { size: [500,281], mode: outbound }
+    cover:
+        data_loader: loader_aws_s3_images
+        cache: cache_resolver_aws_s3
+        quality: 70
+        filters:
+            upscale:
+                min: [1200, 440]
+            thumbnail: { size: [1200,440], mode: outbound }
+    ck:
+        data_loader: loader_aws_s3_images
+        cache: cache_resolver_aws_s3
+        quality: 70
+        filters:
+            relative_resize:
+                widen: 1200
